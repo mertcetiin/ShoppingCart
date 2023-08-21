@@ -23,9 +23,10 @@ function App() {
     setCount((prev) => prev + 1)
   }
 
+
   return (
     <div>
-      <Header count={count} />
+      <Header count={count} products={products} />
       <Card products={products} handleCounter={handleCounter} />
     </div>
   )
