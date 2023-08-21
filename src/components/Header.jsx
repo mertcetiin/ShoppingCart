@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import '../App.css'
 
-function Header() {
+function Header({ count }) {
 
     const [basket, setBasket] = useState([]);
 
@@ -11,7 +11,7 @@ function Header() {
     return (
         <div>
             <input />
-            <button>0</button>
+            <button>{count}</button>
         </div>
     )
 }

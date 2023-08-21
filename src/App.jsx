@@ -17,10 +17,16 @@ function App() {
     productsAxios();
   })
 
+  const [count, setCount] = useState(0);
+
+  const handleCounter = () => {
+    setCount((prev) => prev + 1)
+  }
+
   return (
     <div>
-      <Header />
-      <Card products={products} />
+      <Header count={count} />
+      <Card products={products} handleCounter={handleCounter} />
     </div>
   )
 }

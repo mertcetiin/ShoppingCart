@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Card({ products }) {
+function Card({ products, handleCounter }) {
     return (
         <div>
             {products.map((item) => (
@@ -8,7 +8,7 @@ function Card({ products }) {
                     <img src={item.img} />
                     <h1>{item.name}</h1>
                     <h4>{item.price}</h4>
-                    <button>Add</button>
+                    <button onClick={handleCounter}>Add</button>
                 </div>
             ))}
         </div>
