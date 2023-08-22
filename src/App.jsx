@@ -33,6 +33,7 @@ function App() {
 
   const totalItemCount = products.reduce((total, product) => total + (product.count || 0), 0);
 
+
   return (
     <div className='App'>
       <Header products={products} totalItemCount={totalItemCount} />

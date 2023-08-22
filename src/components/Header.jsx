@@ -1,21 +1,20 @@
-import React from 'react'
-import { useState } from 'react'
-import '../App.css'
+import React, { useState } from 'react';
+import '../App.css';
 
 function Header({ products, totalItemCount }) {
-
     const [visible, setVisible] = useState(true);
 
     const onVisible = () => {
-        setVisible((prevVisible) => !prevVisible)
-    }
+        setVisible((prevVisible) => !prevVisible);
+    };
 
     return (
         <div>
-            <input />
+            <input type='text' />
             <button className='basketDiv' onClick={onVisible}>
-                {visible ? <span>Sepetteki ürün sayısı: {totalItemCount}</span>
-                    :
+                {visible ? (
+                    <span>Sepetteki ürün sayısı: {totalItemCount}</span>
+                ) : (
                     <div className='counterDiv'>
                         <h2>Sepetteki ürün sayısı: {totalItemCount}</h2>
                         {products.map((item) => (
@@ -23,10 +22,11 @@ function Header({ products, totalItemCount }) {
                                 <h3>{item.name} x {item.count || 0}</h3>
                             </div>
                         ))}
-                    </div>}
+                    </div>
+                )}
             </button>
         </div>
-    )
+    );
 }
 
-export default Header
+export default Header;
