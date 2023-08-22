@@ -17,10 +17,10 @@ function Header({ products, totalItemCount }) {
                 {visible ? <span>Sepetteki ürün sayısı: {totalItemCount}</span>
                     :
                     <div className='counterDiv'>
-                        <span>Sepetteki ürün sayısı: {totalItemCount}</span>
+                        <h2>Sepetteki ürün sayısı: {totalItemCount}</h2>
                         {products.map((item) => (
                             <div key={item.id}>
-                                <h1>{item.name} - {item.count || 0}</h1>
+                                <h3>{item.name} x {item.count || 0}</h3>
                             </div>
                         ))}
                     </div>}

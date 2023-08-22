@@ -34,7 +34,7 @@ function App() {
   const totalItemCount = products.reduce((total, product) => total + (product.count || 0), 0);
 
   return (
-    <div>
+    <div className='App'>
       <Header products={products} totalItemCount={totalItemCount} />
       <Card products={products} handleCounter={handleCounter} />
     </div>
