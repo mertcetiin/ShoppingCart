@@ -9,7 +9,7 @@ function Card({ products, handleCounter }) {
                     <img src={item.img} />
                     <h1>{item.name}</h1>
                     <h4>{item.price}</h4>
-                    <button onClick={handleCounter}>Add</button>
+                    <button onClick={() => handleCounter(item.id)}>Add</button>
                 </div>
             ))}
         </div>

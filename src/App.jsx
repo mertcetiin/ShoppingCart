@@ -9,24 +9,33 @@ function App() {
   const [products, setProducts] = useState([]);
 
   const productsAxios = async () => {
-    await axios.get('http://localhost:3000/Products')
-      .then((res) => setProducts(res.data))
+    try {
+      await axios.get('http://localhost:3000/Products')
+        .then((res) => setProducts(res.data))
+    } catch (error) {
+      console.error('Error productsAxios:', error);
+    }
   }
 
   useEffect(() => {
     productsAxios();
-  })
+  }, [])
 
-  const [count, setCount] = useState(0);
 
-  const handleCounter = () => {
-    setCount((prev) => prev + 1)
-  }
+  const handleCounter = (productId) => {
+    const updatedProducts = products.map((product) =>
+      product.id === productId
+        ? { ...product, count: (product.count || 0) + 1 }
+        : product
+    );
+    setProducts(updatedProducts);
+  };
 
+  const totalItemCount = products.reduce((total, product) => total + (product.count || 0), 0);
 
   return (
     <div>
-      <Header count={count} products={products} />
+      <Header products={products} totalItemCount={totalItemCount} />
       <Card products={products} handleCounter={handleCounter} />
     </div>
   )
