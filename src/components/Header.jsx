@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-function Header({ products, totalItemCount }) {
+function Header({ products, totalItemCount, handleFilter }) {
     const [visible, setVisible] = useState(true);
 
     const onVisible = () => {
@@ -10,7 +10,7 @@ function Header({ products, totalItemCount }) {
 
     return (
         <div>
-            <input type='text' />
+            <input type='text' onChange={handleFilter} />
             <button className='basketDiv' onClick={onVisible}>
                 {visible ? (
                     <span>Sepetteki ürün sayısı: {totalItemCount}</span>

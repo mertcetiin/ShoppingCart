@@ -7,11 +7,21 @@ import axios from 'axios';
 function App() {
 
   const [products, setProducts] = useState([]);
+  const [filterProduct, setFilterProduct] = useState([]);
+
+  const handleFilter = (e) => {
+    const filterValue = e.target.value.toLowerCase();
+    const updateFilter = products.filter((item) =>
+      item.name.toLowerCase().includes(filterValue)
+    );
+    setFilterProduct(updateFilter);
+  }
 
   const productsAxios = async () => {
     try {
       await axios.get('http://localhost:3000/Products')
         .then((res) => setProducts(res.data))
+
     } catch (error) {
       console.error('Error productsAxios:', error);
     }
@@ -36,8 +46,8 @@ function App() {
 
   return (
     <div className='App'>
-      <Header products={products} totalItemCount={totalItemCount} />
-      <Card products={products} handleCounter={handleCounter} />
+      <Header products={products} handleFilter={handleFilter} totalItemCount={totalItemCount} />
+      <Card products={filterProduct.length > 0 ? filterProduct : products} handleCounter={handleCounter} />
     </div>
   )
 }
